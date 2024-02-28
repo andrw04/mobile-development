@@ -1,6 +1,5 @@
 package com.example.calculator.ui.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,17 +8,19 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.calculator.ui.theme.AdditionalOperationButtonBackgroundColor
 import com.example.calculator.ui.theme.NumberButtonBackgroundColor
 import com.example.calculator.ui.theme.MainOperationButtonBackgroundColor
+import com.example.calculator.ui.viewmodels.CalculatorAction
+import com.example.calculator.ui.viewmodels.CalculatorViewModel
 
 @Composable
 fun CalculatorKeyboard(
     modifier: Modifier = Modifier,
-    onKeyPressed: (String) -> Unit
+    viewModel: CalculatorViewModel = viewModel()
 ) {
     val buttonSpacing = 8.dp
 
@@ -81,7 +82,7 @@ fun CalculatorKeyboard(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
-                text = "x^y",
+                text = "xⁿ",
                 modifier = Modifier
                     .aspectRatio(1f)
                     .weight(1f),
@@ -89,7 +90,7 @@ fun CalculatorKeyboard(
                 onClick = { /*TODO*/ }
             )
             CalculatorButton(
-                text = "lg",
+                text = "log",
                 modifier = Modifier
                     .aspectRatio(1f)
                     .weight(1f),
@@ -139,14 +140,14 @@ fun CalculatorKeyboard(
                 modifier = Modifier
                     .aspectRatio(1f)
                     .weight(1f),
-                onClick = {}
+                onClick = { viewModel.onAction(CalculatorAction.Clear) }
             )
             CalculatorButton(
                 text = "del",
                 modifier = Modifier
                     .aspectRatio(1f)
                     .weight(1f),
-                onClick = {}
+                onClick = { viewModel.onAction(CalculatorAction.Delete) }
             )
             CalculatorButton(
                 text = "%",
@@ -183,7 +184,7 @@ fun CalculatorKeyboard(
                     .aspectRatio(1f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
-                onClick = {}
+                onClick = { viewModel.onAction(CalculatorAction.Number(7)) }
             )
             CalculatorButton(
                 text = "8",
@@ -191,7 +192,7 @@ fun CalculatorKeyboard(
                     .aspectRatio(1f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
-                onClick = {}
+                onClick = { viewModel.onAction(CalculatorAction.Number(8)) }
             )
             CalculatorButton(
                 text = "9",
@@ -199,7 +200,7 @@ fun CalculatorKeyboard(
                     .aspectRatio(1f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
-                onClick = {}
+                onClick = { viewModel.onAction(CalculatorAction.Number(9)) }
             )
             CalculatorButton(
                 text = "×",
@@ -229,7 +230,7 @@ fun CalculatorKeyboard(
                     .aspectRatio(1f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
-                onClick = {}
+                onClick = { viewModel.onAction(CalculatorAction.Number(4)) }
             )
             CalculatorButton(
                 text = "5",
@@ -237,7 +238,7 @@ fun CalculatorKeyboard(
                     .aspectRatio(1f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
-                onClick = {}
+                onClick = { viewModel.onAction(CalculatorAction.Number(5)) }
             )
             CalculatorButton(
                 text = "6",
@@ -245,7 +246,7 @@ fun CalculatorKeyboard(
                     .aspectRatio(1f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
-                onClick = {}
+                onClick = { viewModel.onAction(CalculatorAction.Number(6)) }
             )
             CalculatorButton(
                 text = "-",
@@ -275,7 +276,7 @@ fun CalculatorKeyboard(
                     .aspectRatio(1f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
-                onClick = {}
+                onClick = { viewModel.onAction(CalculatorAction.Number(1)) }
             )
             CalculatorButton(
                 text = "2",
@@ -283,7 +284,7 @@ fun CalculatorKeyboard(
                     .aspectRatio(1f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
-                onClick = {}
+                onClick = { viewModel.onAction(CalculatorAction.Number(2)) }
             )
             CalculatorButton(
                 text = "3",
@@ -291,7 +292,7 @@ fun CalculatorKeyboard(
                     .aspectRatio(1f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
-                onClick = {}
+                onClick = { viewModel.onAction(CalculatorAction.Number(3)) }
             )
             CalculatorButton(
                 text = "+",
@@ -329,7 +330,7 @@ fun CalculatorKeyboard(
                     .aspectRatio(1f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
-                onClick = {}
+                onClick = { viewModel.onAction(CalculatorAction.Number(0)) }
             )
             CalculatorButton(
                 text = "=",
@@ -346,5 +347,5 @@ fun CalculatorKeyboard(
 @Preview
 @Composable
 fun CalculatorKeyboardPreview() {
-    CalculatorKeyboard(onKeyPressed = { })
+    CalculatorKeyboard()
 }
