@@ -151,7 +151,7 @@ class CalculatorViewModel : ViewModel() {
                     val operand1 = stack.pop()
                     val result = when (token) {
                         "+" -> operand1 + operand2
-                        "-" -> operand1 + operand2
+                        "-" -> operand1 - operand2
                         "×" -> operand1 * operand2
                         "÷" -> operand1 / operand2
                         else -> throw IllegalArgumentException("Unknown operator: $token")
