@@ -1,6 +1,5 @@
 package com.example.calculator.ui.viewmodels
 
-import androidx.compose.runtime.currentRecomposeScope
 import androidx.lifecycle.ViewModel
 import com.example.calculator.ui.states.CalculatorUiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -8,7 +7,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.lang.IllegalArgumentException
 import java.util.Stack
-import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.ln
 import kotlin.math.log10
@@ -29,7 +27,7 @@ class CalculatorViewModel : ViewModel() {
     }
 
     private fun enterSymbol(symbol: String) {
-        var currentText = _uiState.value.currentText
+        val currentText = _uiState.value.currentText
         var newText = ""
         var replaceOldText = true
 
@@ -49,7 +47,7 @@ class CalculatorViewModel : ViewModel() {
             _uiState.value = CalculatorUiState(newText)
         }
         else {
-            _uiState.value = _uiState.value.copy(currentText + newText)
+            _uiState.value = _uiState.value.copy(currentText = currentText + newText)
         }
     }
 
@@ -175,14 +173,14 @@ class CalculatorViewModel : ViewModel() {
 
     private fun getTokens(expr : String) : List<String> {
         var current = 0
-        var tokens = mutableListOf<String>()
+        val tokens = mutableListOf<String>()
 
         while (!isAtEnd(expr, current)) {
             if (isOperatorOrBracket(expr[current])) {
                 tokens.add(expr[current++].toString())
             }
             else if (expr[current].isLetter()) {
-                var function : String = ""
+                var function = ""
 
                 while (!isAtEnd(expr, current) && expr[current].isLetter()) {
                     function += expr[current++]
@@ -191,7 +189,7 @@ class CalculatorViewModel : ViewModel() {
                 tokens.add(function)
             }
             else {
-                var number : String = ""
+                var number = ""
 
                 while (!isAtEnd(expr, current) && (expr[current].isDigit() || expr[current] == '.')) {
                     number += expr[current++]
