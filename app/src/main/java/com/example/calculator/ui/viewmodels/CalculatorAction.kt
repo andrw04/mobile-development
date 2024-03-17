@@ -1,10 +1,8 @@
 package com.example.calculator.ui.viewmodels
 
 sealed class CalculatorAction {
-    data class Number(val number: Int) : CalculatorAction()
+    data class Symbol(val symbol: String) : CalculatorAction()
     object Clear: CalculatorAction()
     object Delete: CalculatorAction()
-    data class Operation(val operation: CalculatorOperation) : CalculatorAction()
     object Calculate: CalculatorAction()
-    object Decimal: CalculatorAction()
 }

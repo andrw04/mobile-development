@@ -39,7 +39,7 @@ fun CalculatorButton(
         Text(
             text = text,
             style = textStyle,
-            fontSize = 24.sp,
+            fontSize = 20.sp,
             color = Color.Black
         )
     }
