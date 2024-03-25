@@ -39,6 +39,9 @@ class CalculatorViewModel : ViewModel() {
         when (symbol) {
             "π", "e" -> newText += getConstantValue(symbol)
             "!", "^", "^(-1)", "+", "×", "÷", "." -> {
+                if (currentText.endsWith("^")) {
+                    newText += "^"
+                }
                 newText += symbol
                 replaceOldText = false
             }
