@@ -1,9 +1,9 @@
-package com.example.calculator.ui.viewmodels
+package com.example.calculator.viewmodels
 
 import androidx.lifecycle.ViewModel
-import com.example.calculator.ui.states.CalculatorUiState
-import com.example.calculator.ui.viewmodels.utilities.ExpressionCalculator
-import com.example.calculator.ui.viewmodels.utilities.MathTokenizer
+import com.example.calculator.states.CalculatorUiState
+import com.example.calculator.viewmodels.utilities.ExpressionCalculator
+import com.example.calculator.viewmodels.utilities.MathTokenizer
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -35,6 +35,5 @@ fun CalculatorDisplay(
             color = color,
             fontFamily = FontFamily.Monospace,
         ),
-//        maxLines = 3
     )
 }

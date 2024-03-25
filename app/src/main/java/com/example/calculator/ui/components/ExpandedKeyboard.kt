@@ -12,19 +12,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.calculator.ui.theme.AdditionalOperationButtonBackgroundColor
-import com.example.calculator.ui.theme.NumberButtonBackgroundColor
 import com.example.calculator.ui.theme.MainOperationButtonBackgroundColor
+import com.example.calculator.ui.theme.NumberButtonBackgroundColor
 import com.example.calculator.viewmodels.CalculatorAction
 import com.example.calculator.viewmodels.CalculatorViewModel
 
 @Composable
-fun CalculatorKeyboard(
+fun ExpandedKeyboard(
     modifier: Modifier = Modifier,
     viewModel: CalculatorViewModel = viewModel()
 ) {
     val buttonSpacing = 8.dp
 
-    Column(
+    Column (
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp),
@@ -36,131 +36,55 @@ fun CalculatorKeyboard(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
-                text = "deg",
-                modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
-                color = AdditionalOperationButtonBackgroundColor,
-                onClick = { /*TODO*/ }
-            )
-            CalculatorButton(
-                text = "sin",
-                modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
-                color = AdditionalOperationButtonBackgroundColor,
-                onClick = { viewModel.onAction(CalculatorAction.Symbol("sin(")) }
-            )
-            CalculatorButton(
-                text = "cos",
-                modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
-                color = AdditionalOperationButtonBackgroundColor,
-                onClick = { viewModel.onAction(CalculatorAction.Symbol("cos(")) }
-            )
-            CalculatorButton(
-                text = "tan",
-                modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
-                color = AdditionalOperationButtonBackgroundColor,
-                onClick = { viewModel.onAction(CalculatorAction.Symbol("tan(")) }
-            )
-            CalculatorButton(
-                text = "ctg",
-                modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
-                color = AdditionalOperationButtonBackgroundColor,
-                onClick = { viewModel.onAction(CalculatorAction.Symbol("ctg(")) }
-            )
-        }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
-        ) {
-            CalculatorButton(
                 text = "xⁿ",
                 modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
+                    .aspectRatio(2f)
+                    .weight(2f),
                 color = AdditionalOperationButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("^")) }
             )
             CalculatorButton(
-                text = "lg",
+                text = "sin",
                 modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
+                    .aspectRatio(2f)
+                    .weight(2f),
                 color = AdditionalOperationButtonBackgroundColor,
-                onClick = { viewModel.onAction(CalculatorAction.Symbol("lg(")) }
+                onClick = { viewModel.onAction(CalculatorAction.Symbol("sin(")) }
             )
-            CalculatorButton(
-                text = "ln",
-                modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
-                color = AdditionalOperationButtonBackgroundColor,
-                onClick = { viewModel.onAction(CalculatorAction.Symbol("ln(")) }
-            )
-            CalculatorButton(
-                text = "(",
-                modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
-                color = AdditionalOperationButtonBackgroundColor,
-                onClick = { viewModel.onAction(CalculatorAction.Symbol("(")) }
-            )
-            CalculatorButton(
-                text = ")",
-                modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
-                color = AdditionalOperationButtonBackgroundColor,
-                onClick = { viewModel.onAction(CalculatorAction.Symbol(")")) }
-            )
-        }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
-        ) {
             CalculatorButton(
                 text = "√x",
                 modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
+                    .aspectRatio(2f)
+                    .weight(2f),
                 color = AdditionalOperationButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("√")) }
             )
             CalculatorButton(
                 text = "C",
                 modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
+                    .aspectRatio(2f)
+                    .weight(2f),
                 onClick = { viewModel.onAction(CalculatorAction.Clear) }
             )
             CalculatorButton(
                 text = "del",
                 modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
+                    .aspectRatio(2f)
+                    .weight(2f),
                 onClick = { viewModel.onAction(CalculatorAction.Delete) }
             )
             CalculatorButton(
                 text = "%",
                 modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
+                    .aspectRatio(2f)
+                    .weight(2f),
                 onClick = {}
             )
             CalculatorButton(
                 text = "÷",
                 modifier = Modifier
-                    .aspectRatio(1f)
-                    .weight(1f),
+                    .aspectRatio(2f)
+                    .weight(2f),
                 color = MainOperationButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("÷")) }
             )
@@ -171,9 +95,25 @@ fun CalculatorKeyboard(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
+                text = "lg",
+                modifier = Modifier
+                    .aspectRatio(2f)
+                    .weight(1f),
+                color = AdditionalOperationButtonBackgroundColor,
+                onClick = { viewModel.onAction(CalculatorAction.Symbol("lg(")) }
+            )
+            CalculatorButton(
+                text = "cos",
+                modifier = Modifier
+                    .aspectRatio(2f)
+                    .weight(2f),
+                color = AdditionalOperationButtonBackgroundColor,
+                onClick = { viewModel.onAction(CalculatorAction.Symbol("cos(")) }
+            )
+            CalculatorButton(
                 text = "x!",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = AdditionalOperationButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("!")) }
@@ -181,7 +121,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "7",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("7")) }
@@ -189,7 +129,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "8",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("8")) }
@@ -197,7 +137,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "9",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("9")) }
@@ -205,7 +145,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "×",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = MainOperationButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("×")) }
@@ -217,9 +157,25 @@ fun CalculatorKeyboard(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
+                text = "ln",
+                modifier = Modifier
+                    .aspectRatio(1.5f)
+                    .weight(1f),
+                color = AdditionalOperationButtonBackgroundColor,
+                onClick = { viewModel.onAction(CalculatorAction.Symbol("ln(")) }
+            )
+            CalculatorButton(
+                text = "tan",
+                modifier = Modifier
+                    .aspectRatio(1.5f)
+                    .weight(1f),
+                color = AdditionalOperationButtonBackgroundColor,
+                onClick = { viewModel.onAction(CalculatorAction.Symbol("tan(")) }
+            )
+            CalculatorButton(
                 text = "1/x",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = AdditionalOperationButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("^(-1)")) }
@@ -227,7 +183,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "4",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("4")) }
@@ -235,7 +191,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "5",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("5")) }
@@ -243,7 +199,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "6",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("6")) }
@@ -251,7 +207,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "-",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = MainOperationButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("-")) }
@@ -263,9 +219,25 @@ fun CalculatorKeyboard(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
+                text = "(",
+                modifier = Modifier
+                    .aspectRatio(1.5f)
+                    .weight(1f),
+                color = AdditionalOperationButtonBackgroundColor,
+                onClick = { viewModel.onAction(CalculatorAction.Symbol("(")) }
+            )
+            CalculatorButton(
+                text = "ctg",
+                modifier = Modifier
+                    .aspectRatio(1.5f)
+                    .weight(1f),
+                color = AdditionalOperationButtonBackgroundColor,
+                onClick = { viewModel.onAction(CalculatorAction.Symbol("ctg(")) }
+            )
+            CalculatorButton(
                 text = "π",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = AdditionalOperationButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("π")) }
@@ -273,7 +245,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "1",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("1")) }
@@ -281,7 +253,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "2",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("2")) }
@@ -289,7 +261,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "3",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("3")) }
@@ -297,7 +269,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "+",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = MainOperationButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("+")) }
@@ -309,9 +281,25 @@ fun CalculatorKeyboard(
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             CalculatorButton(
+                text = ")",
+                modifier = Modifier
+                    .aspectRatio(1.5f)
+                    .weight(1f),
+                color = AdditionalOperationButtonBackgroundColor,
+                onClick = { viewModel.onAction(CalculatorAction.Symbol(")")) }
+            )
+            CalculatorButton(
+                text = "deg",
+                modifier = Modifier
+                    .aspectRatio(1.5f)
+                    .weight(1f),
+                color = AdditionalOperationButtonBackgroundColor,
+                onClick = { /*TODO*/ }
+            )
+            CalculatorButton(
                 text = "e",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = AdditionalOperationButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("e")) }
@@ -319,7 +307,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = ".",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol(".")) }
@@ -327,7 +315,7 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "0",
                 modifier = Modifier
-                    .aspectRatio(1f)
+                    .aspectRatio(1.5f)
                     .weight(1f),
                 color = NumberButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("0")) }
@@ -335,8 +323,8 @@ fun CalculatorKeyboard(
             CalculatorButton(
                 text = "=",
                 modifier = Modifier
-                    .aspectRatio(2f)
-                    .weight(2f),
+                    .aspectRatio(1.5f)
+                    .weight(1f),
                 color = MainOperationButtonBackgroundColor,
                 onClick = { viewModel.onAction(CalculatorAction.Calculate) }
             )
@@ -346,6 +334,6 @@ fun CalculatorKeyboard(
 
 @Preview
 @Composable
-fun CalculatorKeyboardPreview() {
-    CalculatorKeyboard()
+fun ExpandedKeyboardPreview() {
+    ExpandedKeyboard()
 }

@@ -1,4 +1,4 @@
-package com.example.calculator.ui.viewmodels.utilities
+package com.example.calculator.viewmodels.utilities
 
 import java.util.Stack
 import kotlin.math.cos

@@ -29,7 +29,7 @@ fun CalculatorButton(
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-            .clip(RoundedCornerShape(20.dp))
+            .clip(RoundedCornerShape(15.dp))
             .background(color)
             .clickable {
                 onClick()
@@ -39,7 +39,7 @@ fun CalculatorButton(
         Text(
             text = text,
             style = textStyle,
-            fontSize = 20.sp,
+            fontSize = 22.sp,
             color = Color.Black
         )
     }
