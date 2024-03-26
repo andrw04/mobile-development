@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.calculator.ui.components.Display
 import com.example.calculator.ui.components.Keyboard
-import com.example.calculator.viewmodels.CalculatorViewModel
+import com.example.calculator.domain.CalculatorViewModel
 
 @Composable
 fun CalculatorUI(

@@ -1,4 +1,4 @@
-package com.example.calculator.viewmodels
+package com.example.calculator.domain
 
 sealed class CalculatorAction {
     data class Symbol(val symbol: String) : CalculatorAction()

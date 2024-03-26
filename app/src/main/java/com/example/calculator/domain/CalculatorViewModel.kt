@@ -1,19 +1,12 @@
-package com.example.calculator.viewmodels
+package com.example.calculator.domain
 
 import androidx.lifecycle.ViewModel
 import com.example.calculator.states.CalculatorUiState
-import com.example.calculator.viewmodels.utilities.ExpressionCalculator
-import com.example.calculator.viewmodels.utilities.MathTokenizer
+import com.example.calculator.domain.utilities.ExpressionCalculator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.lang.IllegalArgumentException
-import java.util.Stack
-import kotlin.math.cos
-import kotlin.math.ln
-import kotlin.math.log10
-import kotlin.math.sin
-import kotlin.math.tan
 
 class CalculatorViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(CalculatorUiState())
@@ -26,22 +19,24 @@ class CalculatorViewModel : ViewModel() {
             is CalculatorAction.Clear -> _uiState.value = CalculatorUiState()
             is CalculatorAction.Calculate -> calculate()
         }
+        updateState()
     }
 
     private fun enterSymbol(symbol: String) {
-        val currentText = _uiState.value.currentText
+        var currentText = _uiState.value.currentText
         var newText = ""
         var replaceOldText = true
 
         if (currentText != "0")
             replaceOldText = false
 
+        if (symbol in listOf("^", "+", "-", "×", "÷",) && _uiState.value.isOperator){
+            currentText = currentText.dropLast(1)
+        }
+
         when (symbol) {
             "π", "e" -> newText += getConstantValue(symbol)
             "!", "^", "^(-1)", "+", "×", "÷", "." -> {
-                if (currentText.endsWith("^")) {
-                    newText += "^"
-                }
                 newText += symbol
                 replaceOldText = false
             }
@@ -96,6 +91,10 @@ class CalculatorViewModel : ViewModel() {
         val expression : String = _uiState.value.currentText
 
         try {
+            if (_uiState.value.isOperator) {
+                throw IllegalArgumentException();
+            }
+
             val result = ExpressionCalculator.calculate(expression)
             _uiState.value = CalculatorUiState(formatOutput(result))
         }
@@ -106,5 +105,14 @@ class CalculatorViewModel : ViewModel() {
 
     private fun formatOutput(number: Double) : String {
         return number.toString().removeSuffix(".0")
+    }
+
+    private fun updateState() {
+        if (_uiState.value.currentText.last() in listOf('^', '+', '-', '×', '÷',)) {
+            _uiState.value.isOperator = true
+        }
+        else {
+            uiState.value.isOperator = false
+        }
     }
 }
