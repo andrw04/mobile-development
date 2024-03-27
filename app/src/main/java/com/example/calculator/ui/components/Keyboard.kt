@@ -64,31 +64,25 @@ fun ExpandedKeyboard(
                 .weight(1f),
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing),
         ) {
-            KeyboardButton(
+            Button(
                 text = "x!",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("!")) },
-                modifier = Modifier.weight(2f),
+                modifier = Modifier.weight(3f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
-                text = "1/x",
-                onClick = { viewModel.onAction(CalculatorAction.Symbol("^(-1)")) },
-                modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
-            )
-            KeyboardButton(
+            Button(
                 text = "C",
                 onClick = { viewModel.onAction(CalculatorAction.Clear) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "del",
                 onClick = { viewModel.onAction(CalculatorAction.Delete) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "%",
                 onClick = {
                     viewModel.onAction(CalculatorAction.Symbol("÷"))
@@ -98,7 +92,7 @@ fun ExpandedKeyboard(
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "÷",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("÷")) },
                 modifier = Modifier.weight(1f),
@@ -111,43 +105,43 @@ fun ExpandedKeyboard(
                 .weight(1f),
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing),
         ) {
-            KeyboardButton(
+            Button(
                 text = "xⁿ",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("^")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "√x",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("√")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "(",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("(")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "7",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("7")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "8",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("8")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "9",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("9")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "×",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("×")) },
                 modifier = Modifier.weight(1f),
@@ -160,43 +154,43 @@ fun ExpandedKeyboard(
                 .weight(1f),
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing),
         ) {
-            KeyboardButton(
+            Button(
                 text = "lg",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("lg(")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "ln",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("ln(")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = ")",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol(")")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "4",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("4")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "5",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("5")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "6",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("6")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "-",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("-")) },
                 modifier = Modifier.weight(1f),
@@ -209,43 +203,43 @@ fun ExpandedKeyboard(
                 .weight(1f),
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing),
         ) {
-            KeyboardButton(
+            Button(
                 text = "sin",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("sin(")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "cos",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("cos(")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "π",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("π")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "1",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("1")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "2",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("2")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "3",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("3")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "+",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("+")) },
                 modifier = Modifier.weight(1f),
@@ -258,37 +252,37 @@ fun ExpandedKeyboard(
                 .weight(1f),
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing),
         ) {
-            KeyboardButton(
+            Button(
                 text = "tan",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("tan(")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "ctg",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("ctg(")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "e",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("e")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = functionButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = ".",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol(".")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "0",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("0")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "=",
                 onClick = { viewModel.onAction(CalculatorAction.Calculate) },
                 modifier = Modifier.weight(2f),
@@ -320,19 +314,19 @@ fun MinimalKeyboard(
                 .weight(1f),
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing),
         ) {
-            KeyboardButton(
+            Button(
                 text = "C",
                 onClick = { viewModel.onAction(CalculatorAction.Clear) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "del",
                 onClick = { viewModel.onAction(CalculatorAction.Delete) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "%",
                 onClick = {
                     viewModel.onAction(CalculatorAction.Symbol("÷"))
@@ -342,7 +336,7 @@ fun MinimalKeyboard(
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "÷",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("÷")) },
                 modifier = Modifier.weight(1f),
@@ -355,25 +349,25 @@ fun MinimalKeyboard(
                 .weight(1f),
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing),
         ) {
-            KeyboardButton(
+            Button(
                 text = "7",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("7")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "8",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("8")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "9",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("9")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "×",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("×")) },
                 modifier = Modifier.weight(1f),
@@ -386,25 +380,25 @@ fun MinimalKeyboard(
                 .weight(1f),
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing),
         ) {
-            KeyboardButton(
+            Button(
                 text = "4",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("4")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "5",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("5")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "6",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("6")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "-",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("-")) },
                 modifier = Modifier.weight(1f),
@@ -417,25 +411,25 @@ fun MinimalKeyboard(
                 .weight(1f),
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing),
         ) {
-            KeyboardButton(
+            Button(
                 text = "1",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("1")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "2",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("2")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "3",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("3")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "+",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("+")) },
                 modifier = Modifier.weight(1f),
@@ -448,19 +442,19 @@ fun MinimalKeyboard(
                 .weight(1f),
             horizontalArrangement = Arrangement.spacedBy(buttonSpacing),
         ) {
-            KeyboardButton(
+            Button(
                 text = ".",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol(".")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "0",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("0")) },
                 modifier = Modifier.weight(1f),
                 backgroundColor = numberButtonColor
             )
-            KeyboardButton(
+            Button(
                 text = "=",
                 onClick = { viewModel.onAction(CalculatorAction.Calculate) },
                 modifier = Modifier.weight(2f),
