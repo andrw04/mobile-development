@@ -18,14 +18,14 @@ import androidx.compose.ui.unit.sp
 fun Button(
     text: String,
     modifier : Modifier = Modifier,
-    textColor: Color = Color.Black,
+    textColor: Color = Color.White,
     backgroundColor: Color = Color.White,
     onClick: () -> Unit,
 ) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
-            .clip(RoundedCornerShape(20.dp))
+            .clip(RoundedCornerShape(50.dp))
             .fillMaxSize()
             .background(backgroundColor)
             .clickable {

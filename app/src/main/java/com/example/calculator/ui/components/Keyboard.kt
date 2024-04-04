@@ -49,9 +49,9 @@ fun ExpandedKeyboard(
     buttonSpacing: Dp = 2.dp,
     viewModel: CalculatorViewModel = viewModel(),
 ) {
-    val numberButtonColor : Color = Color(0xFF_FF_FF_FF)
-    val operationButtonColor : Color = Color(0xFF_4B_5E_FC)
-    val functionButtonColor : Color = Color(0xFF_D2_D3_DA)
+    val numberButtonColor : Color = Color(0xFF_40_80_FF)
+    val operationButtonColor : Color = Color(0xFF_10_40_FF)
+    val functionButtonColor : Color = Color(0xFF_20_60_FF)
 
     Column(
         modifier = Modifier
@@ -299,9 +299,8 @@ fun MinimalKeyboard(
     buttonSpacing: Dp = 2.dp,
     viewModel: CalculatorViewModel = viewModel(),
 ) {
-    val numberButtonColor : Color = Color(0xFF_FF_FF_FF)
-    val operationButtonColor : Color = Color(0xFF_4B_5E_FC)
-    val functionButtonColor : Color = Color(0xFF_D2_D3_DA)
+    val numberButtonColor : Color = Color(0xFF_40_80_FF)
+    val operationButtonColor : Color = Color(0xFF_10_40_FF)
 
     Column(
         modifier = Modifier

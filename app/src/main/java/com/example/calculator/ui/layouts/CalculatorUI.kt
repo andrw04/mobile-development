@@ -27,7 +27,7 @@ fun CalculatorUI(
     val isLandscape = orientation == Configuration.ORIENTATION_LANDSCAPE
 
     Surface(
-        color = Color(0xFF_F1_F2_F3)
+        color = Color(0xFF_80_C0_FF)
     ) {
         Column(
           modifier = Modifier.fillMaxSize()
