@@ -30,7 +30,11 @@ class CalculatorViewModel : ViewModel() {
         if (currentText != "0")
             replaceOldText = false
 
-        if (symbol in listOf("^", "+", "-", "×", "÷",) && _uiState.value.isOperator){
+        if ((symbol in listOf("√", "sin(", "cos(", "tan(", "ctg(", "lg(", "ln(")) && !_uiState.value.isOperator) {
+            currentText += "×"
+        }
+
+        if (symbol in listOf("^", "+", "-", "×", "÷") && _uiState.value.isOperator){
             currentText = currentText.dropLast(1)
         }
 
@@ -79,7 +83,7 @@ class CalculatorViewModel : ViewModel() {
             return 3
         }
 
-        val functions = listOf<String>("sin(", "cos(", "tan(", "ctg(")
+        val functions = listOf("sin(", "cos(", "tan(", "ctg(")
         functions.forEach { func ->
             text.endsWith(func)
         }
@@ -108,11 +112,12 @@ class CalculatorViewModel : ViewModel() {
     }
 
     private fun updateState() {
-        if (_uiState.value.currentText.last() in listOf('^', '+', '-', '×', '÷',)) {
-            _uiState.value.isOperator = true
-        }
-        else {
-            uiState.value.isOperator = false
+        uiState.value.isOperator = false
+
+        for (s in listOf("^", "+", "-", "×", "÷","√", "sin(", "cos(", "tan(", "ctg(", "lg(", "ln(")) {
+            if (_uiState.value.currentText.endsWith(s)) {
+                _uiState.value.isOperator = true
+            }
         }
     }
 }
