@@ -1,14 +1,18 @@
 package com.example.calculator.ui.layouts
 
 import android.content.res.Configuration
+import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -36,15 +40,14 @@ fun CalculatorUI(
                 text = calculatorUiState.currentText,
                 modifier = modifier.weight(2f)
             )
-            if (isLandscape)
-            {
-                Keyboard(modifier = modifier.weight(3f));
-            }
-            else {
-                Keyboard(
-                    modifier = modifier.weight(5f)
-                );
-            }
+
+            Keyboard(
+                modifier = if (isLandscape) {
+                    modifier.weight(3f)
+                } else {
+                    modifier.weight(5f)
+                }
+            );
         }
     }
 }
