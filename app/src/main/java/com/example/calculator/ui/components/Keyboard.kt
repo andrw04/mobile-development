@@ -3,8 +3,6 @@ package com.example.calculator.ui.components
 import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
-import androidx.compose.foundation.gestures.detectHorizontalDragGestures
-import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,6 +21,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.calculator.domain.CalculatorAction
 import com.example.calculator.domain.CalculatorViewModel
 import kotlin.math.absoluteValue
+import androidx.compose.ui.input.key.KeyEvent
+import androidx.compose.ui.input.key.*
+import androidx.compose.ui.platform.LocalView
 
 @Composable
 fun Keyboard(

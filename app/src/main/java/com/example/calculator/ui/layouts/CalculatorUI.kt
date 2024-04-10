@@ -16,9 +16,11 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.calculator.domain.CalculatorAction
 import com.example.calculator.ui.components.Display
 import com.example.calculator.ui.components.Keyboard
 import com.example.calculator.domain.CalculatorViewModel
+import com.example.calculator.domain.VolumeButtonHandler
 
 @Composable
 fun CalculatorUI(
@@ -50,6 +52,11 @@ fun CalculatorUI(
             );
         }
     }
+
+    VolumeButtonHandler(
+        onVolumeUp = { calculatorViewModel.onAction(CalculatorAction.Calculate) },
+        onVolumeDown = { calculatorViewModel.onAction(CalculatorAction.Delete) }
+    )
 }
 
 @Preview
