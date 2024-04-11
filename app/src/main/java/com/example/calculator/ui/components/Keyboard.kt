@@ -2,6 +2,7 @@ package com.example.calculator.ui.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -18,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.calculator.domain.CalculatorAction
 import com.example.calculator.domain.CalculatorViewModel
+import kotlin.math.absoluteValue
 
 @Composable
 fun Keyboard(
@@ -33,6 +36,23 @@ fun Keyboard(
         modifier = modifier
             .fillMaxSize()
             .background(Color.Transparent)
+            .pointerInput(Unit) {
+                detectDragGestures { _, dragAmount ->
+                    if (dragAmount.x.absoluteValue > dragAmount.y.absoluteValue) {
+                        if (dragAmount.x > 0) { // right
+                            viewModel.onAction(CalculatorAction.Symbol("÷"))
+                        } else { // left
+                            viewModel.onAction(CalculatorAction.Symbol("×"))
+                        }
+                    } else {
+                        if (dragAmount.y > 0) { // down
+                            viewModel.onAction(CalculatorAction.Symbol("-"))
+                        } else { // up
+                            viewModel.onAction(CalculatorAction.Symbol("+"))
+                        }
+                    }
+                }
+            }
     ) {
         if (isLandscape) {
             ExpandedKeyboard()

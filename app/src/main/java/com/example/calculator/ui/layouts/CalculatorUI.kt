@@ -52,7 +52,7 @@ fun CalculatorUI(
 
     VolumeButtonHandler(
         onVolumeUp = { calculatorViewModel.onAction(CalculatorAction.Calculate) },
-        onVolumeDown = { calculatorViewModel.onAction(CalculatorAction.Delete) }
+        onVolumeDown = { calculatorViewModel.onAction(CalculatorAction.Clear) }
     )
 }
 
