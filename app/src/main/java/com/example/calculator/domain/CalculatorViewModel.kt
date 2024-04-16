@@ -3,6 +3,7 @@ package com.example.calculator.domain
 import androidx.lifecycle.ViewModel
 import com.example.calculator.states.CalculatorUiState
 import com.example.calculator.domain.utilities.ExpressionCalculator
+import com.example.calculator.states.AppTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -18,6 +19,7 @@ class CalculatorViewModel : ViewModel() {
             is CalculatorAction.Delete -> delete()
             is CalculatorAction.Clear -> _uiState.value = CalculatorUiState()
             is CalculatorAction.Calculate -> calculate()
+            is CalculatorAction.SetTheme -> setTheme(action.theme)
         }
         updateState()
     }
@@ -119,5 +121,9 @@ class CalculatorViewModel : ViewModel() {
                 _uiState.value.isOperator = true
             }
         }
+    }
+
+    private fun setTheme(theme: AppTheme) {
+        _uiState.value = _uiState.value.copy(appTheme = theme)
     }
 }

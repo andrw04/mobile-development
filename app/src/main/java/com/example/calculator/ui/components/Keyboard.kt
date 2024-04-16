@@ -20,12 +20,14 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.calculator.domain.CalculatorAction
 import com.example.calculator.domain.CalculatorViewModel
+import com.example.calculator.states.AppTheme
 import kotlin.math.absoluteValue
 
 @Composable
 fun Keyboard(
     modifier: Modifier = Modifier,
     viewModel: CalculatorViewModel = viewModel(),
+    appTheme: AppTheme = AppTheme(),
     buttonSpacing: Dp = 2.dp
 ) {
 
@@ -55,24 +57,21 @@ fun Keyboard(
             }
     ) {
         if (isLandscape) {
-            ExpandedKeyboard()
+            ExpandedKeyboard(appTheme)
         }
         else {
-            MinimalKeyboard()
+            MinimalKeyboard(appTheme)
         }
     }
 }
 
 @Composable
 fun ExpandedKeyboard(
+    appTheme: AppTheme,
     modifier: Modifier = Modifier,
     buttonSpacing: Dp = 2.dp,
     viewModel: CalculatorViewModel = viewModel(),
 ) {
-    val numberButtonColor : Color = Color(0xFF_FF_FF_FF)
-    val operationButtonColor : Color = Color(0xFF_4B_5E_FC)
-    val functionButtonColor : Color = Color(0xFF_D2_D3_DA)
-
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -88,19 +87,19 @@ fun ExpandedKeyboard(
                 text = "x!",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("!")) },
                 modifier = Modifier.weight(3f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = "C",
                 onClick = { viewModel.onAction(CalculatorAction.Clear) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "del",
                 onClick = { viewModel.onAction(CalculatorAction.Delete) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "%",
@@ -110,13 +109,13 @@ fun ExpandedKeyboard(
                     viewModel.onAction(CalculatorAction.Calculate)
                           },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "÷",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("÷")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = operationButtonColor
+                backgroundColor = appTheme.operationButtonColor
             )
         }
         Row(
@@ -129,43 +128,43 @@ fun ExpandedKeyboard(
                 text = "xⁿ",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("^")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = "√x",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("√")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = "(",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("(")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = "7",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("7")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "8",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("8")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "9",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("9")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "×",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("×")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = operationButtonColor
+                backgroundColor = appTheme.operationButtonColor
             )
         }
         Row(
@@ -178,43 +177,43 @@ fun ExpandedKeyboard(
                 text = "lg",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("lg(")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = "ln",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("ln(")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = ")",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol(")")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = "4",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("4")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "5",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("5")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "6",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("6")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "-",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("-")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = operationButtonColor
+                backgroundColor = appTheme.operationButtonColor
             )
         }
         Row(
@@ -227,43 +226,43 @@ fun ExpandedKeyboard(
                 text = "sin",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("sin(")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = "cos",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("cos(")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = "π",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("π")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = "1",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("1")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "2",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("2")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "3",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("3")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "+",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("+")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = operationButtonColor
+                backgroundColor = appTheme.operationButtonColor
             )
         }
         Row(
@@ -276,37 +275,37 @@ fun ExpandedKeyboard(
                 text = "tan",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("tan(")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = "ctg",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("ctg(")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = "e",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("e")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = functionButtonColor
+                backgroundColor = appTheme.functionButtonColor
             )
             Button(
                 text = ".",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol(".")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "0",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("0")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "=",
                 onClick = { viewModel.onAction(CalculatorAction.Calculate) },
                 modifier = Modifier.weight(2f),
-                backgroundColor = operationButtonColor
+                backgroundColor = appTheme.operationButtonColor
             )
         }
     }
@@ -315,14 +314,11 @@ fun ExpandedKeyboard(
 
 @Composable
 fun MinimalKeyboard(
+    appTheme: AppTheme,
     modifier: Modifier = Modifier,
     buttonSpacing: Dp = 2.dp,
     viewModel: CalculatorViewModel = viewModel(),
 ) {
-    val numberButtonColor : Color = Color(0xFF_FF_FF_FF)
-    val operationButtonColor : Color = Color(0xFF_4B_5E_FC)
-    val functionButtonColor : Color = Color(0xFF_D2_D3_DA)
-
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -338,13 +334,13 @@ fun MinimalKeyboard(
                 text = "C",
                 onClick = { viewModel.onAction(CalculatorAction.Clear) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "del",
                 onClick = { viewModel.onAction(CalculatorAction.Delete) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "%",
@@ -354,13 +350,13 @@ fun MinimalKeyboard(
                     viewModel.onAction(CalculatorAction.Calculate)
                           },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "÷",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("÷")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = operationButtonColor
+                backgroundColor = appTheme.operationButtonColor
             )
         }
         Row(
@@ -373,25 +369,25 @@ fun MinimalKeyboard(
                 text = "7",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("7")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "8",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("8")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "9",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("9")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "×",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("×")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = operationButtonColor
+                backgroundColor = appTheme.operationButtonColor
             )
         }
         Row(
@@ -404,25 +400,25 @@ fun MinimalKeyboard(
                 text = "4",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("4")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "5",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("5")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "6",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("6")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "-",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("-")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = operationButtonColor
+                backgroundColor = appTheme.operationButtonColor
             )
         }
         Row(
@@ -435,25 +431,25 @@ fun MinimalKeyboard(
                 text = "1",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("1")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "2",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("2")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "3",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("3")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "+",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("+")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = operationButtonColor
+                backgroundColor = appTheme.operationButtonColor
             )
         }
         Row(
@@ -466,19 +462,19 @@ fun MinimalKeyboard(
                 text = ".",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol(".")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "0",
                 onClick = { viewModel.onAction(CalculatorAction.Symbol("0")) },
                 modifier = Modifier.weight(1f),
-                backgroundColor = numberButtonColor
+                backgroundColor = appTheme.numberButtonColor
             )
             Button(
                 text = "=",
                 onClick = { viewModel.onAction(CalculatorAction.Calculate) },
                 modifier = Modifier.weight(2f),
-                backgroundColor = operationButtonColor
+                backgroundColor = appTheme.operationButtonColor
             )
         }
     }

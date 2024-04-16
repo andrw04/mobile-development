@@ -20,12 +20,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.calculator.R
+import com.example.calculator.states.AppTheme
 
 @Composable
 fun Display(
     text: String,
     modifier : Modifier = Modifier,
-    textColor: Color = Color.Black,
+    appTheme: AppTheme = AppTheme(),
     backgroundColor: Color = Color.Transparent,
 ) {
 
@@ -41,7 +42,7 @@ fun Display(
             style = TextStyle(
                 fontWeight = FontWeight.Light,
                 fontSize = 50.sp,
-                color = textColor,
+                color = appTheme.displayTextColor,
                 fontFamily =  FontFamily.SansSerif
             ),
             modifier = Modifier
