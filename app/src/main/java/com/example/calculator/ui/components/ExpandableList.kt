@@ -1,5 +1,6 @@
 package com.example.calculator.ui.components
 
+import android.graphics.Paint.Align
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -59,12 +60,22 @@ fun ExpandableList(
                     Column(
                         modifier = Modifier.verticalScroll(rememberScrollState())
                     ) {
-                        Button(text = "Close", onClick = { showDialog = false}, modifier = Modifier
+                        Button(
+                            text = "Clear",
+                            onClick = {
+                                showDialog = false
+                                FirebaseManager.clearHistory()
+                                      },
+                            modifier = Modifier
                             .align(Alignment.End)
                             .padding(16.dp))
 
-                        for (record in historyRecords) {
-                            Text(text = record, modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp))
+                        if (historyRecords.isEmpty()) {
+                            Text(text = "Empty History List", modifier = Modifier.align(Alignment.CenterHorizontally))
+                        } else {
+                            for (record in historyRecords) {
+                                Text(text = record, modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp))
+                            }
                         }
                     }
                 }

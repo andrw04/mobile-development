@@ -52,9 +52,9 @@ class FirebaseManager {
         suspend fun fetchHistory(): List<String> {
             return withContext(Dispatchers.IO) {
                 val db = Firebase.firestore
-                val records = mutableListOf<String>()
 
                 try {
+                    val records = mutableListOf<HistoryRecord>()
                     val result = db.collection("history").get().await()
                     for (record in result) {
                         val historyRecord = HistoryRecord(
@@ -62,12 +62,30 @@ class FirebaseManager {
                             result = record.data["result"] as String,
                             timestamp = record.data["timestamp"] as Timestamp
                         )
-                        records.add("${historyRecord.expression} = ${historyRecord.result}")
+                        records.add(historyRecord)
                     }
-                    records
+
+                    records.sortByDescending { record -> record.timestamp }
+
+                    val stringRecords = mutableListOf<String>()
+
+                    for (record in records) {
+                        stringRecords.add("${record.expression} = ${record.result}")
+                    }
+
+                    stringRecords
                 } catch (exception: Exception) {
                     Log.d(ContentValues.TAG, "Error getting documents", exception)
                     emptyList()
+                }
+            }
+        }
+
+        fun clearHistory() {
+            val db = Firebase.firestore
+            db.collection("history").get().addOnSuccessListener { result ->
+                for (document in result) {
+                    document.reference.delete()
                 }
             }
         }
