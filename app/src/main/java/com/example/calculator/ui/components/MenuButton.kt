@@ -25,6 +25,7 @@ import com.example.calculator.states.AppTheme
 @Composable
 fun MenuButton(
     modifier: Modifier = Modifier,
+    notificationHandler: (title: String, message: String) -> Unit,
     viewModel: CalculatorViewModel = viewModel()
 ) {
     var expanded by remember { mutableStateOf(false) }
@@ -46,7 +47,10 @@ fun MenuButton(
             for (theme in themes) {
                 DropdownMenuItem(
                     text = { Text(theme.themeName) },
-                    onClick = { viewModel.onAction(CalculatorAction.SetTheme(theme)) })
+                    onClick = {
+                        viewModel.onAction(CalculatorAction.SetTheme(theme))
+                        notificationHandler("Calculator theme", "The theme has been changed to ${theme.themeName}")
+                    })
             }
         }
     }

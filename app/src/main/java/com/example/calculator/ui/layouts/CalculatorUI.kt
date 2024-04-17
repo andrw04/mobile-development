@@ -1,5 +1,6 @@
 package com.example.calculator.ui.layouts
 
+import android.Manifest
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -21,10 +23,28 @@ import com.example.calculator.ui.components.Display
 import com.example.calculator.ui.components.Keyboard
 import com.example.calculator.domain.CalculatorViewModel
 import com.example.calculator.domain.VolumeButtonHandler
+import com.example.calculator.domain.utilities.NotificationHandler
 import com.example.calculator.states.AppTheme
 import com.example.calculator.ui.components.MenuButton
 import com.example.calculator.ui.theme.ChangeStatusBarColor
+import com.google.accompanist.permissions.isGranted
+import com.google.accompanist.permissions.rememberPermissionState
+import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalContext
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.isGranted
+import com.google.accompanist.permissions.rememberPermissionState
 
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun CalculatorUI(
     modifier: Modifier = Modifier,
@@ -37,6 +57,15 @@ fun CalculatorUI(
     
     ChangeStatusBarColor(appTheme = calculatorUiState.appTheme)
 
+    val postNotificationPermission = rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS)
+    val notificationHandler = NotificationHandler(LocalContext.current)
+
+    LaunchedEffect(key1 = true) {
+        if (!postNotificationPermission.status.isGranted) {
+            postNotificationPermission.launchPermissionRequest()
+        }
+    }
+
     Surface(
         color = calculatorUiState.appTheme.backgroundColor
     ) {
@@ -46,7 +75,11 @@ fun CalculatorUI(
             MenuButton(
                 modifier = Modifier
                     .align(Alignment.TopStart)
-                    .padding(16.dp))
+                    .padding(16.dp),
+                notificationHandler = { title, message ->
+                    notificationHandler.showSimpleNotification(title, message)
+                }
+            )
 
             Column(
                 modifier = Modifier.fillMaxSize()
