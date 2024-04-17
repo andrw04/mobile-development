@@ -34,11 +34,15 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
+import com.example.calculator.ui.components.ExpandableList
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
@@ -72,14 +76,26 @@ fun CalculatorUI(
         Box(
             modifier = Modifier.fillMaxSize()
         ) {
-            MenuButton(
-                modifier = Modifier
-                    .align(Alignment.TopStart)
-                    .padding(16.dp),
-                notificationHandler = { title, message ->
-                    notificationHandler.showSimpleNotification(title, message)
-                }
-            )
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ){
+                ExpandableList(
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .size(48.dp)
+                )
+
+                MenuButton(
+                    modifier = Modifier
+                        .padding(16.dp),
+                    notificationHandler = { title, message ->
+                        notificationHandler.showSimpleNotification(title, message)
+                    }
+                )
+            }
+
 
             Column(
                 modifier = Modifier.fillMaxSize()
@@ -110,10 +126,4 @@ fun CalculatorUI(
         onVolumeUp = { calculatorViewModel.onAction(CalculatorAction.Calculate) },
         onVolumeDown = { calculatorViewModel.onAction(CalculatorAction.Clear) }
     )
-}
-
-@Preview
-@Composable
-fun CalculatorUIPreview() {
-    CalculatorUI()
 }
