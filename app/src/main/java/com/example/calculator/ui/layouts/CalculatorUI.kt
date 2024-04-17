@@ -23,6 +23,7 @@ import com.example.calculator.domain.CalculatorViewModel
 import com.example.calculator.domain.VolumeButtonHandler
 import com.example.calculator.states.AppTheme
 import com.example.calculator.ui.components.MenuButton
+import com.example.calculator.ui.theme.ChangeStatusBarColor
 
 @Composable
 fun CalculatorUI(
@@ -33,19 +34,19 @@ fun CalculatorUI(
 
     val orientation = LocalConfiguration.current.orientation
     val isLandscape = orientation == Configuration.ORIENTATION_LANDSCAPE
-
-    val appTheme =
+    
+    ChangeStatusBarColor(appTheme = calculatorUiState.appTheme)
 
     Surface(
-        color = Color(0xFF_F1_F2_F3)
+        color = calculatorUiState.appTheme.backgroundColor
     ) {
         Box(
             modifier = Modifier.fillMaxSize()
         ) {
             MenuButton(
                 modifier = Modifier
-                .align(Alignment.TopStart)
-                .padding(16.dp))
+                    .align(Alignment.TopStart)
+                    .padding(16.dp))
 
             Column(
                 modifier = Modifier.fillMaxSize()

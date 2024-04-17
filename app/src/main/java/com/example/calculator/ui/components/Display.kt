@@ -29,7 +29,6 @@ fun Display(
     appTheme: AppTheme = AppTheme(),
     backgroundColor: Color = Color.Transparent,
 ) {
-
     Box(
         modifier = modifier
             .fillMaxSize()

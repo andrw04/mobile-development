@@ -2,6 +2,7 @@ package com.example.calculator.ui.theme
 
 import android.app.Activity
 import android.os.Build
+import android.view.View
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -10,10 +11,18 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.example.calculator.states.AppTheme
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
+import androidx.activity.ComponentActivity
+import androidx.compose.ui.platform.LocalView
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -67,4 +76,25 @@ fun CalculatorTheme(
         typography = Typography,
         content = content
     )
+}
+
+@Composable
+fun ChangeStatusBarColor(appTheme: AppTheme = AppTheme()) {
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            window.statusBarColor = appTheme.backgroundColor.toArgb()
+
+            val isLight = isLightColor(appTheme.backgroundColor)
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = isLight
+        }
+    }
+}
+
+fun isLightColor(color: Color): Boolean {
+    // Вычисляем яркость цвета по формуле: (0.299 * R + 0.587 * G + 0.114 * B)
+    val brightness = (0.299 * color.red + 0.587 * color.green + 0.114 * color.blue)
+    // Сравниваем яркость с пороговым значением
+    return brightness > 0.5 // Порог можно настроить по своему усмотрению
 }
