@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.calculator.domain.CalculatorAction
 import com.example.calculator.domain.CalculatorViewModel
-import com.example.calculator.domain.utilities.ThemeRepository
+import com.example.calculator.domain.utilities.FirebaseManager
 import com.example.calculator.states.AppTheme
 
 
@@ -41,7 +41,7 @@ fun MenuButton(
             var themes by remember { mutableStateOf(listOf<AppTheme>()) }
 
             LaunchedEffect(key1 = true) {
-                themes = ThemeRepository.fetchThemes()
+                themes = FirebaseManager.fetchThemes()
             }
 
             for (theme in themes) {
@@ -49,7 +49,8 @@ fun MenuButton(
                     text = { Text(theme.themeName) },
                     onClick = {
                         viewModel.onAction(CalculatorAction.SetTheme(theme))
-                        notificationHandler("Calculator theme", "The theme has been changed to ${theme.themeName}")
+                        notificationHandler("Calculator theme", "The theme has been changed to '${theme.themeName}'")
+                        expanded = false
                     })
             }
         }

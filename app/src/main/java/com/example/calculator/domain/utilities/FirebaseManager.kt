@@ -5,12 +5,13 @@ import android.util.Log
 import androidx.compose.ui.graphics.Color
 import com.example.calculator.states.AppTheme
 import com.google.firebase.Firebase
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
-class ThemeRepository {
+class FirebaseManager {
     companion object {
         suspend fun fetchThemes(): List<AppTheme> {
             return withContext(Dispatchers.IO) {
@@ -40,5 +41,14 @@ class ThemeRepository {
                 }
             }
         }
+
+        fun recordCalculationHistory(expression: String, result: String) {
+            val db = Firebase.firestore
+            val timestamp = Timestamp.now()
+            val record = HistoryRecord(expression, result, Timestamp.now())
+            db.collection("history").add(record)
+        }
     }
 }
+
+data class HistoryRecord(val expression: String, val result: String, val timestamp: Timestamp)

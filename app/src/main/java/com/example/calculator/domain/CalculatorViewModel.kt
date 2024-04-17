@@ -3,6 +3,7 @@ package com.example.calculator.domain
 import androidx.lifecycle.ViewModel
 import com.example.calculator.states.CalculatorUiState
 import com.example.calculator.domain.utilities.ExpressionCalculator
+import com.example.calculator.domain.utilities.FirebaseManager
 import com.example.calculator.states.AppTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,7 +18,7 @@ class CalculatorViewModel : ViewModel() {
         when(action) {
             is CalculatorAction.Symbol -> enterSymbol(action.symbol)
             is CalculatorAction.Delete -> delete()
-            is CalculatorAction.Clear -> _uiState.value = CalculatorUiState()
+            is CalculatorAction.Clear -> _uiState.value = _uiState.value.copy(currentText = "0")
             is CalculatorAction.Calculate -> calculate()
             is CalculatorAction.SetTheme -> setTheme(action.theme)
         }
@@ -50,7 +51,7 @@ class CalculatorViewModel : ViewModel() {
         }
 
         if (replaceOldText) {
-            _uiState.value = CalculatorUiState(newText)
+            _uiState.value = _uiState.value.copy(currentText = newText)
         }
         else {
             _uiState.value = _uiState.value.copy(currentText = currentText + newText)
@@ -72,7 +73,7 @@ class CalculatorViewModel : ViewModel() {
 
             val nextText = currentText.substring(0, currentText.length - removeLength)
             if (nextText.isEmpty()) {
-                _uiState.value = CalculatorUiState()
+                _uiState.value = _uiState.value.copy(currentText = "0")
             }
             else {
                 _uiState.value = _uiState.value.copy(currentText = nextText)
@@ -102,10 +103,13 @@ class CalculatorViewModel : ViewModel() {
             }
 
             val result = ExpressionCalculator.calculate(expression)
-            _uiState.value = CalculatorUiState(formatOutput(result))
+            val formatOutput = formatOutput(result)
+            _uiState.value = _uiState.value.copy(currentText = formatOutput)
+
+            FirebaseManager.recordCalculationHistory(expression, formatOutput)
         }
         catch (ex : Exception){
-            _uiState.value = CalculatorUiState("Error")
+            _uiState.value = _uiState.value.copy(currentText = "Error")
         }
     }
 
