@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
-import com.example.calculator.states.AppTheme
+import com.example.calculator.domain.states.AppTheme
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.view.WindowInsetsCompat

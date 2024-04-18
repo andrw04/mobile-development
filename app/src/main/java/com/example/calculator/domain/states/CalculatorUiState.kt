@@ -1,4 +1,4 @@
-package com.example.calculator.states
+package com.example.calculator.domain.states
 
 import androidx.compose.ui.graphics.Color
 

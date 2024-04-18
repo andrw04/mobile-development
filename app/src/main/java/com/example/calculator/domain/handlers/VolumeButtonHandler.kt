@@ -1,4 +1,4 @@
-package com.example.calculator.domain
+package com.example.calculator.domain.handlers
 
 import android.view.KeyEvent
 import androidx.compose.runtime.Composable

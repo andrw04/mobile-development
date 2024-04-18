@@ -18,9 +18,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.calculator.domain.CalculatorAction
-import com.example.calculator.domain.CalculatorViewModel
-import com.example.calculator.states.AppTheme
+import com.example.calculator.domain.viewmodels.CalculatorAction
+import com.example.calculator.domain.viewmodels.CalculatorViewModel
+import com.example.calculator.domain.states.AppTheme
 import kotlin.math.absoluteValue
 
 @Composable

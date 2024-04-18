@@ -11,41 +11,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.calculator.domain.CalculatorAction
+import com.example.calculator.domain.viewmodels.CalculatorAction
 import com.example.calculator.ui.components.Display
 import com.example.calculator.ui.components.Keyboard
-import com.example.calculator.domain.CalculatorViewModel
-import com.example.calculator.domain.VolumeButtonHandler
-import com.example.calculator.domain.utilities.NotificationHandler
-import com.example.calculator.states.AppTheme
+import com.example.calculator.domain.viewmodels.CalculatorViewModel
+import com.example.calculator.domain.handlers.VolumeButtonHandler
+import com.example.calculator.domain.handlers.NotificationHandler
 import com.example.calculator.ui.components.MenuButton
 import com.example.calculator.ui.theme.ChangeStatusBarColor
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
-import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import com.example.calculator.ui.components.ExpandableList
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.accompanist.permissions.isGranted
-import com.google.accompanist.permissions.rememberPermissionState
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @OptIn(ExperimentalPermissionsApi::class)

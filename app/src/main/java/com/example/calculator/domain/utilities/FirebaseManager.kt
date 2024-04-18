@@ -3,7 +3,7 @@ package com.example.calculator.domain.utilities
 import android.content.ContentValues
 import android.util.Log
 import androidx.compose.ui.graphics.Color
-import com.example.calculator.states.AppTheme
+import com.example.calculator.domain.states.AppTheme
 import com.google.firebase.Firebase
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.firestore

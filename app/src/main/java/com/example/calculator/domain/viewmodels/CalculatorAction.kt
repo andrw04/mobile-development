@@ -1,6 +1,6 @@
-package com.example.calculator.domain
+package com.example.calculator.domain.viewmodels
 
-import com.example.calculator.states.AppTheme
+import com.example.calculator.domain.states.AppTheme
 
 sealed class CalculatorAction {
     data class Symbol(val symbol: String) : CalculatorAction()

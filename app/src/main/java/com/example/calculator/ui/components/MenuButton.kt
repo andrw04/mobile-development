@@ -16,10 +16,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.calculator.domain.CalculatorAction
-import com.example.calculator.domain.CalculatorViewModel
+import com.example.calculator.domain.viewmodels.CalculatorAction
+import com.example.calculator.domain.viewmodels.CalculatorViewModel
 import com.example.calculator.domain.utilities.FirebaseManager
-import com.example.calculator.states.AppTheme
+import com.example.calculator.domain.states.AppTheme
 
 
 @Composable
