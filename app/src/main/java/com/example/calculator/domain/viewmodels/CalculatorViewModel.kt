@@ -5,12 +5,15 @@ import com.example.calculator.domain.states.CalculatorUiState
 import com.example.calculator.domain.utilities.functionality.ExpressionCalculator
 import com.example.calculator.domain.utilities.functionality.FirebaseManager
 import com.example.calculator.domain.states.AppTheme
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.lang.IllegalArgumentException
+import javax.inject.Inject
 
-class CalculatorViewModel : ViewModel() {
+@HiltViewModel
+class CalculatorViewModel @Inject constructor() : ViewModel() {
     private val _uiState = MutableStateFlow(CalculatorUiState())
     val uiState: StateFlow<CalculatorUiState> = _uiState.asStateFlow()
 

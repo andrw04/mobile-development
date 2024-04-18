@@ -5,7 +5,9 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import androidx.annotation.RequiresApi
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class NotificationApplication : Application() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate() {

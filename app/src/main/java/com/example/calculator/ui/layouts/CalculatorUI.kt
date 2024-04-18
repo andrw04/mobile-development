@@ -32,6 +32,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.calculator.ui.components.ExpandableList
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 
@@ -40,8 +41,10 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 @Composable
 fun CalculatorUI(
     modifier: Modifier = Modifier,
-    calculatorViewModel: CalculatorViewModel = viewModel(),
+    //calculatorViewModel: CalculatorViewModel = viewModel(),
 ) {
+    val calculatorViewModel = hiltViewModel<CalculatorViewModel>()
+
     val calculatorUiState by calculatorViewModel.uiState.collectAsState()
 
     val orientation = LocalConfiguration.current.orientation
