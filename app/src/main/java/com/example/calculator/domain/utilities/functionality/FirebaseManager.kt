@@ -1,4 +1,4 @@
-package com.example.calculator.domain.utilities
+package com.example.calculator.domain.utilities.functionality
 
 import android.content.ContentValues
 import android.util.Log

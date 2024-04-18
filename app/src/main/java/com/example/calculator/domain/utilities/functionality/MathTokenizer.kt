@@ -1,4 +1,4 @@
-package com.example.calculator.domain.utilities
+package com.example.calculator.domain.utilities.functionality
 
 class MathTokenizer(val expr: String) {
     private var tokens = mutableListOf<String>()

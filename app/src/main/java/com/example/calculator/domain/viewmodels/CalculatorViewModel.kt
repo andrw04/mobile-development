@@ -2,8 +2,8 @@ package com.example.calculator.domain.viewmodels
 
 import androidx.lifecycle.ViewModel
 import com.example.calculator.domain.states.CalculatorUiState
-import com.example.calculator.domain.utilities.ExpressionCalculator
-import com.example.calculator.domain.utilities.FirebaseManager
+import com.example.calculator.domain.utilities.functionality.ExpressionCalculator
+import com.example.calculator.domain.utilities.functionality.FirebaseManager
 import com.example.calculator.domain.states.AppTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

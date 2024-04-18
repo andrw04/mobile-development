@@ -1,4 +1,4 @@
-package com.example.calculator.domain.utilities
+package com.example.calculator.domain.utilities.functionality
 
 import java.util.Stack
 import kotlin.math.cos

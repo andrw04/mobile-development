@@ -76,4 +76,11 @@ dependencies {
 
     // notifications
     implementation("com.google.accompanist:accompanist-permissions:0.31.1-alpha")
+
+    // biometric
+    implementation("androidx.biometric:biometric:1.2.0-alpha05")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // Gson
+    implementation("com.google.code.gson:gson:2.10.1")
 }
