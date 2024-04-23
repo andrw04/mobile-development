@@ -50,7 +50,7 @@ fun CalculatorUI(
     val orientation = LocalConfiguration.current.orientation
     val isLandscape = orientation == Configuration.ORIENTATION_LANDSCAPE
     
-    ChangeStatusBarColor(appTheme = calculatorUiState.appTheme)
+    ChangeStatusBarColor(calculatorUiState.appTheme.backgroundColor)
 
     val postNotificationPermission = rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS)
     val notificationHandler = NotificationHandler(LocalContext.current)

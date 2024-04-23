@@ -7,9 +7,9 @@ import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.example.calculator.R
-import com.example.calculator.domain.utilities.ENCRYPTED_FILE_NAME
-import com.example.calculator.domain.utilities.PREF_BIOMETRIC
-import com.example.calculator.domain.utilities.SECRET_KEY
+import com.example.calculator.common.ENCRYPTED_FILE_NAME
+import com.example.calculator.common.PREF_BIOMETRIC
+import com.example.calculator.common.SECRET_KEY
 import com.example.calculator.domain.utilities.authorization.CryptoManager
 import java.util.UUID
 

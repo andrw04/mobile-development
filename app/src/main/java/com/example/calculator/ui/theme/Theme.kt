@@ -79,14 +79,14 @@ fun CalculatorTheme(
 }
 
 @Composable
-fun ChangeStatusBarColor(appTheme: AppTheme = AppTheme()) {
+fun ChangeStatusBarColor(color: Color) {
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = appTheme.backgroundColor.toArgb()
+            window.statusBarColor = color.toArgb()
 
-            val isLight = isLightColor(appTheme.backgroundColor)
+            val isLight = isLightColor(color)
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = isLight
         }
     }

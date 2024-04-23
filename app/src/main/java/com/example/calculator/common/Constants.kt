@@ -1,4 +1,4 @@
-package com.example.calculator.domain.utilities
+package com.example.calculator.common
 
 const val PREF_BIOMETRIC = "biometric_preferences"
 const val ENCRYPTED_FILE_NAME = "encrypted_data_store"
