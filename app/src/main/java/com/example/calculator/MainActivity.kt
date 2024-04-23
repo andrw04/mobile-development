@@ -18,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.calculator.common.NavigationRoutes
 import com.example.calculator.ui.layouts.CalculatorUI
 import com.example.calculator.ui.layouts.signin.SignInScreen
+import com.example.calculator.ui.layouts.signup.SignUpScreen
 import com.example.calculator.ui.theme.CalculatorTheme
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
@@ -47,7 +48,15 @@ class MainActivity : ComponentActivity() {
                             }
 
                             composable(NavigationRoutes.SIGN_UP) {
+                                SignUpScreen(navController = navController)
+                            }
 
+                            composable(NavigationRoutes.FORGOT_PASSWORD) {
+
+                            }
+
+                            composable(NavigationRoutes.CALCULATOR) {
+                                CalculatorUI()
                             }
                         }
                     )

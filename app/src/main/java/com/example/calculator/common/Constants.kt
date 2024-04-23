@@ -7,4 +7,6 @@ const val SECRET_KEY = "biometric_secret_key"
 object NavigationRoutes {
     const val SIGN_IN = "SignIn"
     const val SIGN_UP = "SignUp"
+    const val FORGOT_PASSWORD = "ForgotPassword"
+    const val CALCULATOR = "Calculator"
 }

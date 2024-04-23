@@ -1,4 +1,4 @@
-package com.example.calculator.ui.layouts.signin
+package com.example.calculator.ui.layouts.signup
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -35,16 +35,16 @@ import com.example.calculator.ui.theme.ChangeStatusBarColor
 import com.example.calculator.ui.theme.Purple40
 
 @Composable
-fun SignInScreen(navController: NavHostController) {
+fun SignUpScreen(navController: NavHostController) {
     ChangeStatusBarColor(color = MaterialTheme.colorScheme.background)
 
     Box(modifier = Modifier.fillMaxSize()) {
         ClickableText(
-            text = AnnotatedString("Sign up here"),
+            text = AnnotatedString("Sign in here"),
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(20.dp),
-            onClick = { navController.navigate(NavigationRoutes.SIGN_UP)},
+            onClick = { navController.navigate(NavigationRoutes.SIGN_IN)},
             style = TextStyle(
                 fontSize = 14.sp,
                 fontFamily = FontFamily.Default,
@@ -60,9 +60,10 @@ fun SignInScreen(navController: NavHostController) {
     ) {
         val email = remember { mutableStateOf(TextFieldValue()) }
         val password = remember { mutableStateOf(TextFieldValue()) }
+        val confirmPassword = remember { mutableStateOf(TextFieldValue())}
 
-        Text(text = "Sign In", style = TextStyle(fontSize = 40.sp, fontFamily = FontFamily.Cursive))
-        
+        Text(text = "Sign Up", style = TextStyle(fontSize = 40.sp, fontFamily = FontFamily.Cursive))
+
         Spacer(modifier = Modifier.height(20.dp))
         TextField(
             label = { Text(text = "Email") },
@@ -78,6 +79,14 @@ fun SignInScreen(navController: NavHostController) {
             onValueChange = { password.value = it })
 
         Spacer(modifier = Modifier.height(20.dp))
+        TextField(
+            label = { Text(text = "Confirm password") },
+            value = confirmPassword.value,
+            visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            onValueChange = { confirmPassword.value = it })
+
+        Spacer(modifier = Modifier.height(20.dp))
         Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
             Button(
                 onClick = { navController.navigate(NavigationRoutes.CALCULATOR) },
@@ -86,18 +95,8 @@ fun SignInScreen(navController: NavHostController) {
                     .fillMaxWidth()
                     .height(50.dp)
             ) {
-                Text(text = "Sign In")
+                Text(text = "Sign Up")
             }
         }
-        
-        Spacer(modifier = Modifier.height(20.dp))
-        ClickableText(
-            text = AnnotatedString("Forgot password?"),
-            onClick = { navController.navigate(NavigationRoutes.FORGOT_PASSWORD) },
-            style = TextStyle(
-                fontSize = 14.sp,
-                fontFamily = FontFamily.Default
-            )
-        )
     }
 }
