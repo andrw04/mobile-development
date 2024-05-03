@@ -22,7 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.example.calculator.domain.utilities.functionality.FirebaseManager
+import com.example.calculator.domain.utilities.FirebaseManager
 
 @Composable
 fun ExpandableList(

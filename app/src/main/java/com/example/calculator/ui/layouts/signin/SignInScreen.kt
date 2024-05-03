@@ -20,6 +20,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -29,75 +30,81 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavHostController
+import com.example.calculator.AuthActivity
 import com.example.calculator.common.NavigationRoutes
+import com.example.calculator.domain.utilities.biometricAuth
+import com.example.calculator.domain.utilities.login
+import com.example.calculator.domain.utilities.setPin
 import com.example.calculator.ui.theme.ChangeStatusBarColor
 import com.example.calculator.ui.theme.Purple40
 
 @Composable
-fun SignInScreen(navController: NavHostController) {
+fun SignInScreen() {
     ChangeStatusBarColor(color = MaterialTheme.colorScheme.background)
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        ClickableText(
-            text = AnnotatedString("Sign up here"),
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(20.dp),
-            onClick = { navController.navigate(NavigationRoutes.SIGN_UP)},
-            style = TextStyle(
-                fontSize = 14.sp,
-                fontFamily = FontFamily.Default,
-                textDecoration = TextDecoration.Underline,
-                color = Purple40
-            )
-        )
-    }
     Column(
         modifier = Modifier.padding(20.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        val email = remember { mutableStateOf(TextFieldValue()) }
-        val password = remember { mutableStateOf(TextFieldValue()) }
+        val activity = LocalContext.current as AuthActivity
+        val pin = remember { mutableStateOf(TextFieldValue()) }
 
         Text(text = "Sign In", style = TextStyle(fontSize = 40.sp, fontFamily = FontFamily.Cursive))
-        
-        Spacer(modifier = Modifier.height(20.dp))
-        TextField(
-            label = { Text(text = "Email") },
-            value = email.value,
-            onValueChange = { email.value = it })
 
         Spacer(modifier = Modifier.height(20.dp))
         TextField(
-            label = { Text(text = "Password") },
-            value = password.value,
+            label = { Text(text = "PIN") },
+            value = pin.value,
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            onValueChange = { password.value = it })
+            onValueChange = { pin.value = it })
 
         Spacer(modifier = Modifier.height(20.dp))
         Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
             Button(
-                onClick = { navController.navigate(NavigationRoutes.CALCULATOR) },
+                onClick = {
+                    login(activity, pin.value.text)
+                },
                 shape = RoundedCornerShape(50.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp)
             ) {
-                Text(text = "Sign In")
+                Text(text = "Enter PIN")
             }
         }
-        
+
         Spacer(modifier = Modifier.height(20.dp))
-        ClickableText(
-            text = AnnotatedString("Forgot password?"),
-            onClick = { navController.navigate(NavigationRoutes.FORGOT_PASSWORD) },
-            style = TextStyle(
-                fontSize = 14.sp,
-                fontFamily = FontFamily.Default
-            )
-        )
+        Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
+            Button(
+                onClick = {
+                          setPin(activity, pin.value.text)
+                },
+                shape = RoundedCornerShape(50.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+            ) {
+                Text(text = "Set PIN")
+            }
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+        Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
+            Button(
+                onClick = {
+                          biometricAuth(activity)
+                },
+                shape = RoundedCornerShape(50.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+            ) {
+                Text(text = "Fingerprint")
+            }
+        }
     }
 }

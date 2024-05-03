@@ -38,28 +38,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val navController = rememberNavController()
-                    NavHost(
-                        navController = navController,
-                        startDestination = NavigationRoutes.SIGN_IN,
-                        builder = {
-                            composable(NavigationRoutes.SIGN_IN) {
-                                SignInScreen(navController = navController)
-                            }
-
-                            composable(NavigationRoutes.SIGN_UP) {
-                                SignUpScreen(navController = navController)
-                            }
-
-                            composable(NavigationRoutes.FORGOT_PASSWORD) {
-
-                            }
-
-                            composable(NavigationRoutes.CALCULATOR) {
-                                CalculatorUI()
-                            }
-                        }
-                    )
+                    CalculatorUI()
                 }
             }
         }

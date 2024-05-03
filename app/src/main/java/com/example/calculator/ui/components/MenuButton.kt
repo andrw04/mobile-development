@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.calculator.domain.viewmodels.CalculatorAction
 import com.example.calculator.domain.viewmodels.CalculatorViewModel
-import com.example.calculator.domain.utilities.functionality.FirebaseManager
+import com.example.calculator.domain.utilities.FirebaseManager
 import com.example.calculator.domain.states.AppTheme
 
 
